@@ -1,4 +1,4 @@
-FROM ubuntu:bionic-20201119
+FROM ubuntu:18.04
 WORKDIR /root
 ENV LC_CTYPE C.UTF-8
 ARG DEBIAN_FRONTEND=noninteractive
@@ -6,7 +6,22 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN dpkg --add-architecture i386
 
 RUN apt update -y
-RUN apt install python python-dev python-setuptools python3 python3-pip python3-dev python3-setuptools python-capstone libssl-dev libffi-dev build-essential libc6:i386 libc6-dbg gcc-multilib make gcc netcat git curl wget gdb vim nano zsh ruby-full -y
+RUN apt install python python-dev python-setuptools python3 python3-pip python3-dev python3-setuptools python-capstone libssl-dev libffi-dev build-essential libc6-dbg gcc-multilib make gcc netcat git curl wget gdb vim nano zsh ruby-full -y
+
+RUN wget http://archive.ubuntu.com/ubuntu/pool/main/g/glibc/libc-bin_2.27-3ubuntu1.2_amd64.deb
+RUN wget http://archive.ubuntu.com/ubuntu/pool/main/g/glibc/libc-dev-bin_2.27-3ubuntu1.2_amd64.deb
+RUN wget http://archive.ubuntu.com/ubuntu/pool/main/g/glibc/libc6-dbg_2.27-3ubuntu1.2_amd64.deb
+RUN wget http://archive.ubuntu.com/ubuntu/pool/main/g/glibc/libc6-dev_2.27-3ubuntu1.2_amd64.deb
+RUN wget http://archive.ubuntu.com/ubuntu/pool/main/g/glibc/libc6-i386_2.27-3ubuntu1.2_amd64.deb
+RUN wget http://archive.ubuntu.com/ubuntu/pool/main/g/glibc/libc6_2.27-3ubuntu1.2_amd64.deb
+
+RUN dpkg -i libc-bin_2.27-3ubuntu1.2_amd64.deb
+RUN dpkg -i libc-dev-bin_2.27-3ubuntu1.2_amd64.deb
+RUN dpkg -i libc6_2.27-3ubuntu1.2_amd64.deb
+RUN dpkg -i libc6-dev_2.27-3ubuntu1.2_amd64.deb
+RUN dpkg -i libc6-i386_2.27-3ubuntu1.2_amd64.deb
+RUN dpkg -i libc6-dbg_2.27-3ubuntu1.2_amd64.deb
+
 RUN curl -O https://bootstrap.pypa.io/2.7/get-pip.py && python get-pip.py && rm get-pip.py
 RUN python -m pip install --upgrade pip && python3 -m pip install --upgrade pip
 RUN python -m pip install --ignore-installed pwntools
