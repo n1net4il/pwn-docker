@@ -22,7 +22,7 @@ RUN dpkg -i libc6-dev_2.27-3ubuntu1.2_amd64.deb
 RUN dpkg -i libc6-i386_2.27-3ubuntu1.2_amd64.deb
 RUN dpkg -i libc6-dbg_2.27-3ubuntu1.2_amd64.deb
 
-RUN curl -O https://bootstrap.pypa.io/2.7/get-pip.py && python get-pip.py && rm get-pip.py
+RUN curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py && python get-pip.py && rm get-pip.py
 RUN python -m pip install --upgrade pip && python3 -m pip install --upgrade pip
 RUN python -m pip install --ignore-installed pwntools
 RUN gem install one_gadget seccomp-tools
