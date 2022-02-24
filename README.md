@@ -29,13 +29,13 @@ docker run --rm -it -v $(pwd):/root/pwn --name ubuntu_16 pwn-docker:16.04 /bin/z
 ```
 
 
-
-### docker alias
+### docker alias in ~/.zshrc or ~/.bashrc
 
 ```sh
-alias pwn16="docker run --rm -it -v $(pwd):/pwn --name ubuntu_16 pwn-docker:16.04 /bin/zsh"
-alias pwn18="docker run --rm -it -v $(pwd):/pwn --name ubuntu_18 pwn-docker:18.04 /bin/zsh"
-alias pwn19="docker run --rm -it -v $(pwd):/pwn --name ubuntu_19 pwn-docker:19.04 /bin/zsh"
-alias pwn20="docker run --rm -it -v $(pwd):/pwn --name ubuntu_20 pwn-docker:20.04 /bin/zsh"
-alias pwn21="docker run --rm -it -v $(pwd):/pwn --name ubuntu_21 pwn-docker:21.04 /bin/zsh"
+export somewhere="/path/to/somewhere"
+alias pwn16="docker run --rm -it -v $somewhere:/pwn --name ubuntu_16 pwn-docker:16.04 /bin/zsh"
+alias pwn18="docker run --rm -it -v $somewhere:/pwn --name ubuntu_18 pwn-docker:18.04 /bin/zsh"
+alias pwn19="docker run --rm -it -v $somewhere:/pwn --name ubuntu_19 pwn-docker:19.04 /bin/zsh"
+alias pwn20="docker run --rm -it -v $somewhere:/pwn --name ubuntu_20 pwn-docker:20.04 /bin/zsh"
+alias pwn21="docker run --rm -it -v $somewhere:/pwn --name ubuntu_21 pwn-docker:21.04 /bin/zsh"
 ```
