@@ -9,7 +9,7 @@ RUN apt update -y
 RUN apt install python python-dev python-setuptools python3 python3-pip python3-dev python3-setuptools python-capstone libssl-dev libffi-dev build-essential libc6-i386 libc6-dbg gcc-multilib make gcc netcat git curl wget gdb vim nano zsh ruby-full -y
 RUN curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py && python get-pip.py && rm get-pip.py
 RUN python -m pip install --upgrade pip && python3 -m pip install --upgrade pip
-RUN python -m pip install --ignore-installed pwntools
+RUN python -m pip install --ignore-installed pwntools && python3 -m pip install --ignore-installed pwntools
 RUN gem install one_gadget seccomp-tools
 
 RUN git clone https://github.com/pwndbg/pwndbg .pwndbg
