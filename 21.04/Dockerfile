@@ -28,7 +28,7 @@ RUN git clone https://github.com/sindresorhus/pure .zsh/pure
 RUN git clone https://github.com/zdharma/fast-syntax-highlighting .zsh/fast-syntax-highlighting
 RUN echo "ZSH_THEME=""\\nsource /root/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh\\nfpath+=/root/.zsh/pure\\nautoload -U promptinit; promptinit\\nprompt pure" > .zshrc
 
-echo set -g mouse on > ~/.tmux.conf
+RUN echo set -g mouse on > ~/.tmux.conf
 
 RUN mkdir /pwn
 WORKDIR /pwn
