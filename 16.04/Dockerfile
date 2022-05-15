@@ -9,9 +9,12 @@ RUN apt update -y
 RUN apt install software-properties-common -y
 RUN apt-add-repository ppa:brightbox/ruby-ng 
 RUN apt update -y
-RUN apt install python python-dev python-setuptools python3 python3-pip python3-dev python3-setuptools python-capstone libssl-dev libffi-dev build-essential libc6:i386 libc6-dbg gcc-multilib make gcc netcat git curl wget gdb vim nano zsh ruby2.4 ruby2.4-dev -y
-RUN curl -O https://bootstrap.pypa.io/2.7/get-pip.py && python get-pip.py && rm get-pip.py
+RUN apt-get update -y
+RUN apt-get install glibc-source
+RUN apt install python python-dev python-setuptools python3 python3-pip python3-dev python3-setuptools python-capstone libssl-dev libffi-dev build-essential libc6:i386 libc6-dbg gcc-multilib make gcc netcat git curl wget gdb vim nano zsh ruby2.4 ruby2.4-dev tmux -y
+RUN curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py && python get-pip.py && rm get-pip.py
 RUN python -m pip install --upgrade pip && python3 -m pip install pip==20.0.1
+RUN python3 -m pip install --upgrade pip
 RUN python -m pip install --ignore-installed pwntools && python3 -m pip install --ignore-installed pwntools
 RUN gem install one_gadget seccomp-tools
 
@@ -30,6 +33,9 @@ RUN mkdir .zsh
 RUN git clone https://github.com/sindresorhus/pure .zsh/pure
 RUN git clone https://github.com/zdharma/fast-syntax-highlighting .zsh/fast-syntax-highlighting
 RUN echo "ZSH_THEME=""\\nsource /root/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh\\nfpath+=/root/.zsh/pure\\nautoload -U promptinit; promptinit\\nprompt pure" > .zshrc
+
+RUN echo set -g mouse on > ~/.tmux.conf
+
 
 RUN mkdir /pwn
 WORKDIR /pwn
